@@ -1,0 +1,57 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/ranking/index",
+    "pages/my/index",
+    "pages/index/woyaoruzhu",
+    "pages/index/jiafengyizhan",
+    "pages/index/pingfenbiaozhun",
+    "pages/index/huodongjianying",
+    "pages/ranking/shijilist",
+    "pages/my/tijiaojilu",
+    "pages/index/tijiaoshiji",
+    "pages/index/ruzhuqiye",
+    "pages/my/ruzhudet",
+    "pages/my/xieyi",
+    "pages/my/yinsi",
+    "pages/index/newdet",
+    "pages/index/jianyingdet",
+    "pages/my/jiludet",
+    "pages/ranking/shijidet",
+    "pages/index/gonggaodet",
+    "pages/index/zhanxiangqing"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "white",
+    "navigationBarBackgroundColor": "#EA433A",
+    "backgroundColor": "#EA433A"
+  },
+  "tabBar": {
+    "color": "#C1BCBC",
+    "selectedColor": "#333",
+    "font-size": "20rpx",
+    "border-top": "1rpx solid #D5D5D5",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "static/image/tabicon1.png",
+        "selectedIconPath": "static/image/tabicon1-1.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/ranking/index",
+        "iconPath": "static/image/tabicon2.png",
+        "selectedIconPath": "static/image/tabicon2-1.png",
+        "text": "排行榜"
+      },
+      {
+        "pagePath": "pages/my/index",
+        "iconPath": "static/image/tabicon3.png",
+        "selectedIconPath": "static/image/tabicon3-1.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "usingComponents": {}
+}

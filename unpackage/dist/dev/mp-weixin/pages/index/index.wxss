@@ -1,0 +1,246 @@
+
+.redtop{
+		width: 100%;
+		height: 200rpx;
+		background-color: #EA433A;
+		color: #fff;
+		padding-top: 100rpx;
+		padding-left: 30rpx;
+		-webkit-box-sizing: border-box;
+		        box-sizing: border-box;
+		position: fixed;
+		top: 0;
+		z-index: 10;
+}
+.huoqu{
+		position: fixed;
+		top: 0;
+		background-color: #fff;
+		/* height: 200rpx; */
+		width: 100%;
+		height: 100%;
+		-webkit-box-sizing: border-box;
+		        box-sizing: border-box;
+		padding-top: 60%;
+		z-index: 50;
+		left: 0;
+}
+.huoqu image{
+		width: 200rpx;
+		height: 200rpx;
+		margin: auto;
+		display: block;
+}
+.shao{
+		color: #333;
+		text-align: center;
+		font-size: 32rpx;
+		margin-top: 80rpx;
+		margin-bottom: 60rpx;
+}
+.btnbor{
+		width: 680rpx;
+		margin: 20rpx auto;
+		height: 1rpx;
+		background: #999;
+		opacity: .5;
+		margin-top: 80rpx;
+}
+.huoqu button{
+		background: #67c23a;
+		color: #fff;
+		font: 32rpx;
+		width: 600rpx;
+		height: 80rpx;
+		display: -webkit-box;
+		display: -webkit-flex;
+		display: flex;
+		margin: auto;
+		-webkit-box-pack: center;
+		-webkit-justify-content: center;
+		        justify-content: center;
+		-webkit-box-align: center;
+		-webkit-align-items: center;
+		        align-items: center;
+		border: 1rpx solid #67c23a;
+		border: 0!important;
+		border-radius: 40rpx;
+}
+.netl{
+		margin: 0 0 19rpx 20rpx;
+}
+.newtitle{
+		font-size: 30rpx;
+		font-family: PingFangSC-Regular, PingFang SC;
+		font-weight: 400;
+		color: #51565D;
+}
+.ntti{
+		overflow:hidden; 
+		text-overflow:ellipsis;
+		display:-webkit-box; 
+		-webkit-box-orient:vertical;
+		-webkit-line-clamp:2; 
+		font-size: 32rpx;
+		font-family: PingFangSC-Regular, PingFang SC;
+		font-weight: 400;
+		color: #51565D;
+		line-height: 45rpx;
+}
+.time{
+		font-size: 24rpx;
+		font-family: PingFangSC-Regular, PingFang SC;
+		font-weight: 400;
+		color: #9EA3A7;
+		margin-top: 9rpx;
+}
+.newitemleft{
+		width: 438rpx;
+}
+.newitemleft2{
+		width: 680rpx!important;
+}
+.newitemright image{
+		width: 220rpx;
+		height: 124rpx;
+}
+.newitem{
+		width: 680rpx;
+		margin: auto;
+		border-bottom: 1rpx solid #e8e8e8;
+		display: -webkit-box;
+		display: -webkit-flex;
+		display: flex;
+		-webkit-box-pack: justify;
+		-webkit-justify-content: space-between;
+		        justify-content: space-between;
+		padding: 20rpx 0 20rpx 0;
+}
+.crimson{
+		width: 120rpx;
+		height: 6rpx;
+		background: #E93030;
+		border-radius: 4rpx;
+		margin-top: -10rpx;
+		position: relative;
+		opacity: .8;
+}
+.newbox{
+		width: 720rpx;
+		background: #FFFFFF;
+		border-radius: 14rpx;
+		margin-top: 16rpx;
+		font-size: 28rpx;
+		font-family: PingFangSC-Regular, PingFang SC;
+		font-weight: 400;
+		color: #51565D;
+		padding-top: 24rpx;
+}
+.lable{
+		width: 56rpx;
+		height: 30rpx;
+		background: #FDEDEC;
+		border-radius: 1rpx;
+		font-size: 14rpx;
+		font-family: PingFangSC-Regular, PingFang SC;
+		font-weight: 400;
+		color: #E83031;
+		display: -webkit-box;
+		display: -webkit-flex;
+		display: flex;
+		-webkit-box-pack: center;
+		-webkit-justify-content: center;
+		        justify-content: center;
+		-webkit-box-align: center;
+		-webkit-align-items: center;
+		        align-items: center;
+}
+.nsbiao{
+		width: 500rpx;
+			 white-space:nowrap;
+			    overflow:hidden;
+			    text-overflow:ellipsis;
+					margin-left: 17rpx;
+}
+.newswiperright swiper-item {
+		display: -webkit-box;
+		display: -webkit-flex;
+		display: flex;
+		float: left;
+		height: 38rpx;
+		-webkit-box-align: center;
+		-webkit-align-items: center;
+		        align-items: center;
+}
+.newswiperright{
+		width: 510rpx;
+		position: absolute;
+		height: 80rpx;
+		background: #fff;
+		left: 135rpx;
+		top: 0;
+}
+.biaoicon{
+	width: 102rpx;
+	height: 65rpx;
+	margin: 7rpx 0 0 16rpx;
+}
+.newswiper{
+	/* display: flex; */
+	position: relative;
+	width: 720rpx;
+	/* height: 80rpx; */
+	background: #FFFFFF;
+	border-radius: 14rpx;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	        justify-content: space-between;
+}
+.iconlist{
+		width: 720rpx;
+		background: #FFFFFF;
+		border-radius: 14rpx;
+		margin: 16rpx auto;
+		display: -webkit-box;
+		display: -webkit-flex;
+		display: flex;
+		-webkit-box-pack: justify;
+		-webkit-justify-content: space-between;
+		        justify-content: space-between;
+}
+.iconitem{
+		width: 180rpx;
+		padding: 20rpx 0 20rpx 0;
+		-webkit-box-sizing: border-box;
+		        box-sizing: border-box;
+}
+.iconitem image{
+		width: 91rpx;
+		height: 91rpx;
+		margin: auto;
+		display: block;
+}
+.iconitem view{
+		font-size: 22rpx;
+		font-family: PingFangSC-Regular, PingFang SC;
+		font-weight: 400;
+		color: #333333;
+		margin-top: 11rpx;
+		text-align: center;
+}
+.box{
+		width: 720rpx;
+		height: 294rpx;
+		margin: auto;
+		margin-top: 220rpx;
+}
+.banner{
+		margin-top: 20rpx;
+}
+.banner swiper-item{
+		border-radius: 15rpx;
+}
+.banner image{
+		width: 100%;
+}
+

@@ -1,0 +1,33 @@
+
+.list{
+	width: 720rpx;
+	margin: auto;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	        justify-content: space-between;
+	-webkit-flex-wrap: wrap;
+	        flex-wrap: wrap;
+}
+.item{
+	width: 350rpx;
+}
+.item image{
+	width: 350rpx;
+	height: 250rpx;
+	border-radius: 15rpx;
+	margin-top: 30rpx;
+}
+.item view{
+	font-size: 32rpx;
+	font-family: PingFangSC-Regular, PingFang SC;
+	font-weight: 400;
+	color: #333333;
+	white-space:nowrap;
+	 overflow:hidden;
+	 text-overflow:ellipsis;
+	 margin-top: 16rpx;
+}
+

@@ -1,0 +1,12 @@
+
+.list{
+	width: 680rpx;
+	margin: 50rpx auto;
+}
+.item view{
+	font-size: 30rpx;
+	font-family: PingFangSC-Regular, PingFang SC;
+	font-weight: 400;
+	color: #51565D;
+}
+

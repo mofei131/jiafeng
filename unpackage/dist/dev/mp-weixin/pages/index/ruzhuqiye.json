@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "入驻企业",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "pick-regions": "/components/pick-regions/pick-regions"
+  }
+}

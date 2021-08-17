@@ -1,0 +1,167 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/index/index",
+			"style": {
+				"enablePullDownRefresh": true,
+				"navigationStyle": "custom",
+				"app-plus": {
+					"titleNView": false
+				}
+			}
+			// "style": {
+			// 	"navigationBarTitleText": "",
+			// 	"enablePullDownRefresh": true
+			// }
+		},
+		{
+			"path": "pages/ranking/index",
+			"style": {
+				"enablePullDownRefresh": true,
+				"navigationStyle": "custom",
+				"app-plus": {
+					"titleNView": false
+				}
+			}
+		},{
+			"path": "pages/my/index",
+			"style": {
+				"navigationStyle": "custom",
+				"app-plus": {
+					"titleNView": false
+				}
+			}
+		},{
+			"path": "pages/index/woyaoruzhu",
+			"style": {
+				"navigationBarTitleText": "我要入驻",
+				"enablePullDownRefresh": true
+			}
+		},{
+			"path": "pages/index/jiafengyizhan",
+			"style": {
+				"navigationBarTitleText": "家风驿站",
+				"enablePullDownRefresh": true
+			}
+		},{
+			"path": "pages/index/pingfenbiaozhun",
+			"style": {
+				"navigationBarTitleText": "评分标准",
+				"enablePullDownRefresh": true
+			}
+		},{
+			"path": "pages/index/huodongjianying",
+			"style": {
+				"navigationBarTitleText": "活动剪影",
+				"enablePullDownRefresh": true
+			}
+		},{
+			"path": "pages/ranking/shijilist",
+			"style": {
+				"navigationBarTitleText": "事迹列表",
+				"enablePullDownRefresh": true
+			}
+		},{
+			"path": "pages/my/tijiaojilu",
+			"style": {
+				"navigationBarTitleText": "提交记录",
+				"enablePullDownRefresh": true
+			}
+		},{
+			"path": "pages/index/tijiaoshiji",
+			"style": {
+				"navigationBarTitleText": "提交事迹",
+				"enablePullDownRefresh": true
+			}
+		},{
+			"path": "pages/index/ruzhuqiye",
+			"style": {
+				"navigationBarTitleText": "入驻企业",
+				"enablePullDownRefresh": true
+			}
+		},{
+			"path": "pages/my/ruzhudet",
+			"style": {
+				"navigationBarTitleText": "入驻详情",
+				"enablePullDownRefresh": true
+			}
+		},{
+			"path": "pages/my/xieyi",
+			"style": {
+				"navigationBarTitleText": "用户协议",
+				"enablePullDownRefresh": true
+			}
+		},{
+			"path": "pages/my/yinsi",
+			"style": {
+				"navigationBarTitleText": "隐私协议",
+				"enablePullDownRefresh": true
+			}
+		},{
+			"path": "pages/index/newdet",
+			"style": {
+				"navigationBarTitleText": "咨询要闻",
+				"enablePullDownRefresh": true
+			}
+		},{
+			"path": "pages/index/jianyingdet",
+			"style": {
+				"navigationBarTitleText": "详情内容",
+				"enablePullDownRefresh": true
+			}
+		},{
+			"path": "pages/my/jiludet",
+			"style": {
+				"navigationBarTitleText": "提交内容",
+				"enablePullDownRefresh": true
+			}
+		},{
+			"path": "pages/ranking/shijidet",
+			"style": {
+				"navigationBarTitleText": "实际详情",
+				"enablePullDownRefresh": true
+			}
+		},{
+			"path": "pages/index/gonggaodet",
+			"style": {
+				"navigationBarTitleText": "公告详情",
+				"enablePullDownRefresh": true
+			}
+		},{
+			"path": "pages/index/zhanxiangqing",
+			"style": {
+				"navigationBarTitleText": "驿站详情",
+				"enablePullDownRefresh": true
+			}
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "#fff",
+		// "navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#EA433A",
+		"backgroundColor": "#EA433A"
+	},
+	"tabBar": {
+		"color": "#C1BCBC",
+		"selectedColor": "#333",
+		"font-size": "20rpx",
+		// "box-shadow": "0px -1px 4px 0px rgba(224, 224, 224, 0.5)",
+		"border-top":"1rpx solid #D5D5D5",
+		"list": [{
+			"pagePath": "pages/index/index",
+			"iconPath": "static/image/tabicon1.png",
+			"selectedIconPath": "static/image/tabicon1-1.png",
+			"text": "首页"
+		}, {
+			"pagePath": "pages/ranking/index",
+			"iconPath": "static/image/tabicon2.png",
+			"selectedIconPath": "static/image/tabicon2-1.png",
+			"text": "排行榜"
+		},{
+			"pagePath": "pages/my/index",
+			"iconPath": "static/image/tabicon3.png",
+			"selectedIconPath": "static/image/tabicon3-1.png",
+			"text": "我的"
+		}]
+	}
+}

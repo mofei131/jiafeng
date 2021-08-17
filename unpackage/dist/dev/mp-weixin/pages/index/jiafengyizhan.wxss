@@ -1,0 +1,53 @@
+
+.bottom{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	        justify-content: space-between;
+}
+.bottom view:nth-child(1){
+	font-size: 21rpx;
+	font-family: PingFangSC-Regular, PingFang SC;
+	font-weight: 400;
+	color: #666666;
+}
+.bottom view:nth-child(2){
+	font-size: 21rpx;
+	font-family: Helvetica;
+	color: #666666;
+}
+.right{
+	width: 525rpx;
+	margin-left: 25rpx;
+}
+.top view{
+	width: 525rpx;
+	white-space:nowrap;
+	 overflow:hidden;
+	 text-overflow:ellipsis;
+	 font-size: 29rpx;
+	 font-family: PingFangSC-Regular, PingFang SC;
+	 font-weight: 400;
+	 color: #323232;
+	 margin-top: 10rpx;
+	 margin-bottom: 13rpx;
+}
+.box{
+	width: 700rpx;
+	margin: auto;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+}
+.left image{
+	width: 145rpx;
+	height: 96rpx;
+}
+.item{
+	border-bottom: 1rpx solid #EEEEEE;
+	margin-top: 30rpx;
+	padding-bottom: 30rpx;
+}
+

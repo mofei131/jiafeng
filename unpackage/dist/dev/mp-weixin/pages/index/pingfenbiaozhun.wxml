@@ -1,0 +1,1 @@
+<view><view class="list"><block wx:for="{{biaozhun}}" wx:for-item="item" wx:for-index="index" wx:key="index"><view class="item"><view>{{index+1+"、"+item.title+"+"+item.score}}</view></view></block></view></view>

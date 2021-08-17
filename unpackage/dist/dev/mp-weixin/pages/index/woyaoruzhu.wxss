@@ -1,0 +1,46 @@
+
+.ruzhu{
+	padding-top: 11rpx;
+}
+.qiyi{
+	width: 720rpx;
+	height: 98rpx;
+	background: #FFFFFF;
+	border-radius: 14px;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	        justify-content: space-between;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+	padding: 0 6rpx 0 16rpx;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+	margin: 20rpx auto;
+}
+.qiyileft,.qiyiright{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+}
+.qiyileft image{
+	width: 66rpx;
+	height: 66rpx;
+}
+.qiyileft view{
+	font-size: 32rpx;
+	font-family: PingFangSC-Regular, PingFang SC;
+	font-weight: 400;
+	color: #333333;
+}
+.qiyiright image{
+	width: 66rpx;
+	height: 66rpx;
+}
+

@@ -1,0 +1,66 @@
+{
+  "setting": {},
+  "condition": {
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "name": "我的",
+          "pathName": "pages/my/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "排行榜",
+          "pathName": "pages/ranking/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "家风驿站",
+          "pathName": "pages/index/jiafengyizhan",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "提交事迹",
+          "pathName": "pages/index/tijiaoshiji",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "入驻企业",
+          "pathName": "pages/index/ruzhuqiye",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "详情内容",
+          "pathName": "pages/index/zhanxiangqing",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/index/gaoxq",
+          "pathName": "pages/index/gaoxq",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/ranking/scroll",
+          "pathName": "pages/ranking/scroll",
+          "query": "",
+          "scene": null
+        }
+      ]
+    }
+  }
+}

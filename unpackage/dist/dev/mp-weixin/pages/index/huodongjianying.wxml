@@ -1,0 +1,1 @@
+<view><view class="list"><block wx:for="{{jianying}}" wx:for-item="item" wx:for-index="index" wx:key="index"><view data-event-opts="{{[['tap',[['yzdet',['$0'],[[['jianying','',index]]]]]]]}}" class="item" bindtap="__e"><image src="{{item.image}}" mode="widthFix"></image><view>{{item.title}}</view></view></block></view></view>

@@ -1,0 +1,106 @@
+
+.btn{
+	width: 686rpx;
+	height: 70rpx;
+	background: #EA433A;
+	border-radius: 35rpx;
+	font-size: 28rpx;
+	font-family: PingFangSC-Regular, PingFang SC;
+	font-weight: 400;
+	color: #FFFFFF;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	        justify-content: center;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+	margin: auto;
+	margin-top: 46rpx;
+}
+.jieguo view{
+	font-size: 28rpx;
+	font-family: PingFangSC-Regular, PingFang SC;
+	font-weight: 400;
+	color: #51565D;
+}
+.jieguo{
+	width: 710rpx;
+	height: 180rpx;
+	background: #F4F4F4;
+	border-radius: 8rpx;
+	margin: auto;
+	padding: 18rpx 0 0 25rpx;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+}
+.xiangmu{
+	font-size: 24rpx;
+	font-family: PingFangSC-Regular, PingFang SC;
+	font-weight: 400;
+	color: #666666;
+}
+.flex-row image{
+	width: 11rpx;
+	height: 20rpx;
+	margin-left: 13rpx;
+}
+.leixing{
+	font-size: 24rpx;
+	font-family: PingFangSC-Medium, PingFang SC;
+	font-weight: 500;
+	color: #6A6A6A;
+}
+page{
+	background: #fff;
+}
+.mingcheng input{
+	width: 710rpx;
+	height: 76rpx;
+	background: #F4F4F4;
+	border-radius: 16rpx;
+	margin: 20rpx auto;
+	font-size: 28rpx;
+	font-family: PingFangSC-Regular, PingFang SC;
+	font-weight: 400;
+	color: #51565D;
+	padding: 0 15rpx 0 15rpx;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+}
+.miaoshu textarea{
+	width: 710rpx;
+	height: 407rpx;
+	background: #F4F4F4;
+	border-radius: 8rpx;
+	margin: auto;
+	padding: 15rpx 25rpx 15rpx 25rpx;
+	font-size: 28rpx;
+	font-family: PingFangSC-Regular, PingFang SC;
+	font-weight: 400;
+	color: #51565D;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+}
+.xuanze{
+	width: 710rpx;
+	height: 76rpx;
+	background: #F4F4F4;
+	border-radius: 16rpx;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+	margin: 20rpx auto;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	        justify-content: space-between;
+	padding: 0 25rpx 0 15rpx;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+}
+
