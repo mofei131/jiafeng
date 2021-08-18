@@ -26,9 +26,8 @@
 		data() {
 			return {
                 cityArr:CHINA_REGIONS[0].childs,
-                // districtArr:CHINA_REGIONS[0].childs[0].childs,
-                // multiIndex: [0, 0, 0],
-								multiIndex: [0, 0],
+                districtArr:CHINA_REGIONS[0].childs[0].childs,
+                multiIndex: [0, 0, 0],
                 isInitMultiArray:true,
 			}
 		},
@@ -60,11 +59,10 @@
                     return [
                         CHINA_REGIONS,
                         CHINA_REGIONS[0].childs,
-                        // CHINA_REGIONS[0].childs[0].childs
+                        CHINA_REGIONS[0].childs[0].childs
                     ]
                 }
-                // return [CHINA_REGIONS,this.cityArr,this.districtArr];
-								return [CHINA_REGIONS,this.cityArr];
+                return [CHINA_REGIONS,this.cityArr,this.districtArr];
             }
         },
 		methods: {
@@ -101,8 +99,7 @@
                 // 结构赋值
                 let [index0,index1,index2] = e.detail.value;
                 let [arr0,arr1,arr2] = this.pickedArr;
-                // let address = [arr0[index0],arr1[index1],arr2[index2]];
-								let address = [arr0[index0],arr1[index1]];
+                let address = [arr0[index0],arr1[index1],arr2[index2]];
                 // console.log(address);
                 this.$emit('getRegion',address)
             },

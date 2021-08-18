@@ -182,21 +182,71 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
     return {
+      xian: false,
       page: 1,
       limit: 100,
-      my: { paiming: '1', name: '莫非', jifen: '18500', avater: 'https://avatar.52pojie.cn/data/avatar/000/86/86/84_avatar_middle.jpg' },
+      my: '',
       rank: [] };
 
   },
   onLoad: function onLoad() {
     var that = this;
+
   },
   onShow: function onShow() {
     var that = this;
+    uni.login({
+      provider: 'weixin',
+      success: function success(res) {
+        // console.log(res);
+        uni.request({
+          url: 'https://jiafeng.boyaokj.cn/api/wechat/login',
+          method: 'GET',
+          data: {
+            code: res.code },
+
+          success: function success(res) {
+            console.log(res);
+            that.user_id = res.data.data.user_id;
+            if (res.data.data.renzheng_status == 1) {
+
+            } else {
+              uni.showModal({
+                title: '提示',
+                content: '未入住，请先入驻',
+                success: function success(res) {
+                  if (res.confirm) {
+                    uni.switchTab({
+                      url: '../index/index' });
+
+                  } else if (res.cancel) {
+                    uni.switchTab({
+                      url: '../index/index' });
+
+                  }
+                } });
+
+            }
+          } });
+
+      } });
+
+    if (uni.getStorageSync('userInfo').user_id == null) {
+      this.xian = !this.xian;
+    }
     uni.request({
       url: 'https://jiafeng.boyaokj.cn/api/organization/rank',
       method: 'GET',
@@ -212,15 +262,100 @@ var _default =
       } });
 
   },
+  onHide: function onHide() {
+    if (uni.getStorageSync('userInfo').user_id == null) {
+      this.xian = !this.xian;
+    }
+
+  },
   onReachBottom: function onReachBottom() {
     var that = this;
     // that.getnewsList();
     console.log("下拉了");
   },
   methods: {
+    fan: function fan() {
+      uni.switchTab({
+        url: '../index/index' });
+
+    },
     tourl: function tourl(id, name) {
       uni.navigateTo({
         url: './shijilist?id=' + id + "&name=" + name });
+
+    },
+    getUserInfo: function getUserInfo() {
+      var that = this;
+      uni.getUserProfile({
+        desc: 'Wexin', // 这个参数是必须的
+        success: function success(res) {
+          // console.log(res)
+          var data = JSON.parse(res.rawData);
+          uni.request({
+            url: 'https://jiafeng.boyaokj.cn/api/wechat/setUserinfo',
+            method: 'GET',
+            data: {
+              nickname: data.nickName,
+              avater: data.avatarUrl,
+              country: data.country,
+              gender: data.gender,
+              province: data.province,
+              city: data.city,
+              user_id: that.user_id },
+
+            success: function success(red) {
+              // console.log(red.data.data)
+              uni.setStorage({
+                key: 'userInfo',
+                data: red.data.data });
+
+            } });
+
+        } });
+
+    },
+    getPhoneNumber: function getPhoneNumber(e) {
+      var that = this;
+      uni.login({
+        provider: 'weixin',
+        success: function success(res) {
+          // console.log(res)
+          uni.request({
+            url: 'https://jiafeng.boyaokj.cn/api/wechat/setMobile',
+            method: 'GET',
+            data: {
+              user_id: uni.getStorageSync('userInfo').user_id,
+              code: res.code,
+              iv: e.detail.iv,
+              encrypteddata: e.detail.encryptedData },
+
+            success: function success(res) {
+              that.xian = !that.xian;
+              // console.log(res)
+              // uni.setStorage({
+              // 	key:'userInfo',
+              // 	data:res.data.data
+              // })
+              uni.request({
+                url: 'https://jiafeng.boyaokj.cn/api/wechat/getUserinfo',
+                method: 'GET',
+                data: {
+                  user_id: uni.getStorageSync('userInfo').user_id },
+
+                success: function success(red) {
+                  // console.log(red.data.data)
+                  uni.setStorage({
+                    key: 'userInfo',
+                    data: red.data.data });
+
+                  uni.switchTab({
+                    url: '../index/index' });
+
+                } });
+
+            } });
+
+        } });
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))

@@ -47,6 +47,15 @@
 				</view>
 			</view>
 		</view>
+		<view class="huoqu" v-if="xian">
+			<image src="../../static/image/wxgficon.png" mode=""></image>
+			<view class="btnbor"></view>
+			<view class="shao">会获取您的昵称、头像、手机号、地区及性别</view>
+			<view style="display: flex;justify-content: space-between;">
+			<button class="fan" @tap="fan()">返回</button>
+			<button class="deng" open-type="getPhoneNumber" @getphonenumber="getPhoneNumber" @click="getUserInfo">授权登录</button>
+			</view>
+		</view>
 	</view>
 </template>
 
@@ -54,17 +63,58 @@
 	export default{
 		data(){
 			return{
+				xian:false,
 				page:1,
 				limit:100,
-				my:{paiming:'1',name:'莫非',jifen:'18500',avater:'https://avatar.52pojie.cn/data/avatar/000/86/86/84_avatar_middle.jpg'},
-				rank:[]
+				my:'',
+				rank:[],
 			}
 		},
 		onLoad() {
 			let that = this
+			
 		},
 		onShow() {
 			let that = this
+			uni.login({
+				provider: 'weixin',
+				  success: function (res) {
+				    // console.log(res);
+						uni.request({
+							url:'https://jiafeng.boyaokj.cn/api/wechat/login',
+							method:'GET',
+							data:{
+								code:res.code
+							},
+							success(res) {
+								console.log(res)
+								that.user_id = res.data.data.user_id
+								if(res.data.data.renzheng_status == 1){
+									
+								}else{
+									uni.showModal({
+									    title: '提示',
+									    content: '未入住，请先入驻',
+									    success: function (res) {
+									        if (res.confirm) {
+									            uni.switchTab({
+									                url: '../index/index'
+									            });
+									        } else if (res.cancel) {
+									           uni.switchTab({
+									               url: '../index/index'
+									           });
+									        }
+									    }
+									});
+								}
+							}
+						})
+				  }
+			})
+			if(uni.getStorageSync('userInfo').user_id == null){
+				this.xian = !this.xian
+			}
 			uni.request({
 				url:'https://jiafeng.boyaokj.cn/api/organization/rank',
 				method:'GET',
@@ -80,22 +130,168 @@
 				}
 			})
 		},
+		onHide(){
+			if(uni.getStorageSync('userInfo').user_id == null){
+				this.xian = !this.xian
+			}
+			
+		},
 		onReachBottom() {
 			let that = this
 		  // that.getnewsList();
 			console.log("下拉了")
 		},
 		methods:{
+			fan(){
+				uni.switchTab({
+					url:'../index/index'
+				})
+			},
 			tourl(id,name){
 				uni.navigateTo({
 					url:'./shijilist?id='+id+"&name="+name
 				})
-			}
+			},
+			getUserInfo(){
+				let that = this
+				 uni.getUserProfile({
+						 desc:'Wexin',     // 这个参数是必须的
+						 success:res=>{
+								 // console.log(res)
+								 let data = JSON.parse(res.rawData)
+								 uni.request({
+								 	url:'https://jiafeng.boyaokj.cn/api/wechat/setUserinfo',
+									method:'GET',
+									data:{
+										nickname:data.nickName,
+										avater:data.avatarUrl,
+										country:data.country,
+										gender:data.gender,
+										province:data.province,
+										city:data.city,
+										user_id:that.user_id,
+									},
+									success(red) {
+										// console.log(red.data.data)
+										uni.setStorage({
+											key:'userInfo',
+											data:red.data.data
+										})
+									}
+								 })
+						 }
+				 })
+				},
+				getPhoneNumber(e) {
+								 let that = this 
+									uni.login({
+										provider: 'weixin',
+										success(res) {
+											// console.log(res)
+											uni.request({
+												url:'https://jiafeng.boyaokj.cn/api/wechat/setMobile',
+												method:'GET',
+												data:{
+													user_id:uni.getStorageSync('userInfo').user_id,
+													code:res.code,
+													iv:e.detail.iv,
+													encrypteddata:e.detail.encryptedData
+												},
+												success(res) {
+													that.xian = !that.xian
+													// console.log(res)
+													// uni.setStorage({
+													// 	key:'userInfo',
+													// 	data:res.data.data
+													// })
+													uni.request({
+														url:'https://jiafeng.boyaokj.cn/api/wechat/getUserinfo',
+														method:'GET',
+														data:{
+															user_id:uni.getStorageSync('userInfo').user_id
+														},
+														success(red) {
+															// console.log(red.data.data)
+															uni.setStorage({
+																key:'userInfo',
+																data:red.data.data,
+															})
+															uni.switchTab({
+																url:'../index/index'
+															})
+														}
+													})
+												}
+											})
+										}
+									})
+				           },
 		}
 	}
 </script>
 
 <style>
+	.huoqu{
+		position: fixed;
+		top: 0;
+		background-color: #fff;
+		/* height: 200rpx; */
+		width: 100%;
+		height: 100%;
+		box-sizing: border-box;
+		padding-top: 60%;
+		z-index: 50;
+		left: 0;
+	}
+	.huoqu image{
+		width: 200rpx;
+		height: 200rpx;
+		margin: auto;
+		display: block;
+	}
+	.shao{
+		color: #333;
+		text-align: center;
+		font-size: 32rpx;
+		margin-top: 80rpx;
+		margin-bottom: 60rpx;
+	}
+	.btnbor{
+		width: 680rpx;
+		margin: 20rpx auto;
+		height: 1rpx;
+		background: #999;
+		opacity: .5;
+		margin-top: 80rpx;
+	}
+	.fan{
+		background: #fff;
+		color: #333;
+		font: 32rpx;
+		width: 290rpx;
+		height: 80rpx;
+		display: flex;
+		margin: auto;
+		justify-content: center;
+		align-items: center;
+		border: 3rpx solid #fff;
+		border: 0!important;
+		border-radius: 40rpx;
+	}
+	.deng{
+		background: #67c23a;
+		color: #fff;
+		font: 32rpx;
+		width: 290rpx;
+		height: 80rpx;
+		display: flex;
+		margin: auto;
+		justify-content: center;
+		align-items: center;
+		border: 1rpx solid #67c23a;
+		border: 0!important;
+		border-radius: 40rpx;
+	}
 	.pangpai{
 		width: 67rpx;
 		height: 69rpx;

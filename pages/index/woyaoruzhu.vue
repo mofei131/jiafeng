@@ -4,7 +4,7 @@
 			<view class="qiyi" @tap="tourl()">
 				<view class="qiyileft">
 				<image src="../../static/image/qiye.png"></image>
-				<view>入驻企业</view>
+				<view>入驻企事业</view>
 				</view>
 				<view class="qiyiright">
 					<image src="../../static/image/righticon.png"></image>

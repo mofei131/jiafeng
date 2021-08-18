@@ -6,7 +6,7 @@
 			 <pick-regions :defaultRegion="defaultRegionCode" @getRegion="handleGetRegion" >
 				 <view style="display: flex; color: #51565D;width: 420rpx;align-items: center;width: 500rpx;justify-content: space-between;">
 			            <view v-if="city == ''" >请选择城市</view>
-									<view >{{city}}</view>
+									<view >{{city}} {{area}}</view>
 									<image class="cityicon" src="../../static/image/righticon.png"></image>
 									</view>
 			        </pick-regions>
@@ -51,6 +51,7 @@
 			return{
 				region:[],
 				city:'',
+				area:'',
 				code:'',
 				name:'',
 				phone:'',
@@ -75,12 +76,14 @@
 				let that = this
 					this.city = region[1].name
 					this.code = region[1].code
+					this.area = region[2].name
 					console.log(region[1].code)
 					uni.request({
 						url:'https://jiafeng.boyaokj.cn/api/Organization/getCompany',
 						method:'GET',
 						data:{
-							city_id:region[1].code
+							city_id:region[1].code,
+							area_id:region[2].code
 							// city_id:370700
 						},
 						success(res) {

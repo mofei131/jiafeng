@@ -46,11 +46,31 @@
 		opacity: .5;
 		margin-top: 80rpx;
 }
-.huoqu button{
+.fan{
+		background: #fff;
+		color: #333;
+		font: 32rpx;
+		width: 290rpx;
+		height: 80rpx;
+		display: -webkit-box;
+		display: -webkit-flex;
+		display: flex;
+		margin: auto;
+		-webkit-box-pack: center;
+		-webkit-justify-content: center;
+		        justify-content: center;
+		-webkit-box-align: center;
+		-webkit-align-items: center;
+		        align-items: center;
+		border: 3rpx solid #fff;
+		border: 0!important;
+		border-radius: 40rpx;
+}
+.deng{
 		background: #67c23a;
 		color: #fff;
 		font: 32rpx;
-		width: 600rpx;
+		width: 290rpx;
 		height: 80rpx;
 		display: -webkit-box;
 		display: -webkit-flex;

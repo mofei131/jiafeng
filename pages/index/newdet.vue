@@ -13,6 +13,7 @@
 			return{
 				content: '',
 				id:''
+				
 			}
 		},
 		onLoad(p) {

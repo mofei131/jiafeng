@@ -172,10 +172,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
     return {
+      xian: false,
       user: {
         // name:uni.getStorageSync('userInfo').nickname,
         // unit:uni.getStorageSync('userInfo').orgName,
@@ -188,7 +198,9 @@ var _default =
         headurl: '',
         paiming: '',
         jifen: '',
-        liulan: '' },
+        liulan: '',
+        xian: false,
+        user_id: '' },
 
       funct: [
       {
@@ -227,9 +239,30 @@ var _default =
         that.funct[2].kefu = res.data.data.data;
       } });
 
+
   },
   onShow: function onShow() {
     var that = this;
+    uni.login({
+      provider: 'weixin',
+      success: function success(res) {
+        // console.log(res);
+        uni.request({
+          url: 'https://jiafeng.boyaokj.cn/api/wechat/login',
+          method: 'GET',
+          data: {
+            code: res.code },
+
+          success: function success(res) {
+            // console.log(res)
+            that.user_id = res.data.data.user_id;
+          } });
+
+      } });
+
+    if (uni.getStorageSync('userInfo').user_id == null) {
+      this.xian = !this.xian;
+    }
     uni.request({
       url: 'https://jiafeng.boyaokj.cn/api/wechat/getUserinfo',
       method: 'GET',
@@ -250,14 +283,100 @@ var _default =
 
       } });
 
+
+  },
+  onHide: function onHide() {
+    if (uni.getStorageSync('userInfo').user_id == null) {
+      this.xian = !this.xian;
+    }
+
   },
   methods: {
+    fan: function fan() {
+      uni.switchTab({
+        url: '../index/index' });
+
+    },
     tourl: function tourl(url, kefu) {
       uni.navigateTo({
         url: url });
 
       uni.makePhoneCall({
         phoneNumber: kefu });
+
+    },
+    getUserInfo: function getUserInfo() {
+      var that = this;
+      uni.getUserProfile({
+        desc: 'Wexin', // 这个参数是必须的
+        success: function success(res) {
+          // console.log(res)
+          var data = JSON.parse(res.rawData);
+          uni.request({
+            url: 'https://jiafeng.boyaokj.cn/api/wechat/setUserinfo',
+            method: 'GET',
+            data: {
+              nickname: data.nickName,
+              avater: data.avatarUrl,
+              country: data.country,
+              gender: data.gender,
+              province: data.province,
+              city: data.city,
+              user_id: that.user_id },
+
+            success: function success(red) {
+              // console.log(red.data.data)
+              uni.setStorage({
+                key: 'userInfo',
+                data: red.data.data });
+
+            } });
+
+        } });
+
+    },
+    getPhoneNumber: function getPhoneNumber(e) {
+      var that = this;
+      uni.login({
+        provider: 'weixin',
+        success: function success(res) {
+          // console.log(res)
+          uni.request({
+            url: 'https://jiafeng.boyaokj.cn/api/wechat/setMobile',
+            method: 'GET',
+            data: {
+              user_id: uni.getStorageSync('userInfo').user_id,
+              code: res.code,
+              iv: e.detail.iv,
+              encrypteddata: e.detail.encryptedData },
+
+            success: function success(res) {
+              that.xian = !that.xian;
+              // console.log(res)
+              // uni.setStorage({
+              // 	key:'userInfo',
+              // 	data:res.data.data
+              // })
+              uni.request({
+                url: 'https://jiafeng.boyaokj.cn/api/wechat/getUserinfo',
+                method: 'GET',
+                data: {
+                  user_id: uni.getStorageSync('userInfo').user_id },
+
+                success: function success(red) {
+                  // console.log(red.data.data)
+                  uni.setStorage({
+                    key: 'userInfo',
+                    data: red.data.data });
+
+                  uni.switchTab({
+                    url: '../index/index' });
+
+                } });
+
+            } });
+
+        } });
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))

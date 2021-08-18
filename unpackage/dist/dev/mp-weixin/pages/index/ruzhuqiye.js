@@ -206,6 +206,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       region: [],
       city: '',
+      area: '',
       code: '',
       name: '',
       phone: '',
@@ -230,12 +231,14 @@ __webpack_require__.r(__webpack_exports__);
       var that = this;
       this.city = region[1].name;
       this.code = region[1].code;
+      this.area = region[2].name;
       console.log(region[1].code);
       uni.request({
         url: 'https://jiafeng.boyaokj.cn/api/Organization/getCompany',
         method: 'GET',
         data: {
-          city_id: region[1].code
+          city_id: region[1].code,
+          area_id: region[2].code
           // city_id:370700
         },
         success: function success(res) {

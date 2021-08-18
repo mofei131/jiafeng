@@ -146,6 +146,7 @@ var _default =
       content: '',
       id: '' };
 
+
   },
   onLoad: function onLoad(p) {
     var that = this;

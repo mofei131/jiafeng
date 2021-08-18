@@ -230,6 +230,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
 {
   components: {
     pickRegions: pickRegions },
@@ -257,9 +260,9 @@ __webpack_require__.r(__webpack_exports__);
   },
   onLoad: function onLoad() {
     var _this = this;
-    if (!uni.getStorageSync('userInfo')) {
-      this.xian = !this.xian;
-    }
+    // if(!uni.getStorageSync('userInfo')){
+    // 	this.xian = !this.xian
+    // }
     uni.login({
       provider: 'weixin',
       success: function success(res) {
@@ -332,8 +335,21 @@ __webpack_require__.r(__webpack_exports__);
       } });
 
   },
+  // onHide(){
+  // 	if(uni.getStorageSync('userInfo').user_id == null){
+  // 		this.xian = !this.xian
+  // 	}
+  // },
   methods: {
+    fan: function fan() {
+      uni.reLaunch({
+        url: '../index/index' });
 
+      // this.xian = !this.xian
+      // uni.switchTab({
+
+      // })
+    },
     // 获取选择的地区
     handleGetRegion: function handleGetRegion(region) {
       var that = this;
@@ -342,13 +358,23 @@ __webpack_require__.r(__webpack_exports__);
       // console.log(region[1].code)
     },
     ggdet: function ggdet(item) {
-      uni.navigateTo({
-        url: './gonggaodet?id=' + item.id });
+      if (uni.getStorageSync('userInfo').user_id == null) {
+        this.xian = !this.xian;
+      } else {
+        uni.navigateTo({
+          url: './gonggaodet?id=' + item.id });
+
+      }
 
     },
     newdet: function newdet(item) {
-      uni.navigateTo({
-        url: './newdet?id=' + item.id });
+      if (uni.getStorageSync('userInfo').user_id == null) {
+        this.xian = !this.xian;
+      } else {
+        uni.navigateTo({
+          url: './newdet?id=' + item.id });
+
+      }
 
     },
     getUserInfo: function getUserInfo() {
@@ -423,8 +449,13 @@ __webpack_require__.r(__webpack_exports__);
 
     },
     tourl: function tourl(item) {
-      uni.navigateTo({
-        url: item.tourl });
+      if (uni.getStorageSync('userInfo').user_id == null) {
+        this.xian = !this.xian;
+      } else {
+        uni.navigateTo({
+          url: item.tourl });
+
+      }
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))

@@ -8,7 +8,7 @@
 									<image style="width: 32rpx;
     height: 32rpx;
     margin-left: 6rpx;
-    margin-top: 6rpx;" src="../../static/image/weizhiicon.png"></image>
+    margin-top: 10rpx;" src="../../static/image/weizhiicon.png"></image>
 									</view>
 			        </pick-regions>
 		</view>
@@ -47,7 +47,7 @@
 			<view class="crimson"></view>
 			</view>
 			<view class="newlist">
-				<view class="newitem" v-for="(item,index) in newlist" :key="index" @tap="newdet(item)">
+				<view class="newitem" v-for="(item,index) in newlist" :key="index" @tap="newdet(item)" >
 					<view class="newitemleft" :class="[item.image == ''?'newitemleft2':'']">
 						<view class="ntti">{{item.title}}</view>
 						<view class="time">{{item.create_time}}</view>
@@ -62,7 +62,10 @@
 			<image src="../../static/image/wxgficon.png" mode=""></image>
 			<view class="btnbor"></view>
 			<view class="shao">会获取您的昵称、头像、手机号、地区及性别</view>
-			<button open-type="getPhoneNumber" @getphonenumber="getPhoneNumber" @click="getUserInfo">授权登录</button>
+			<view style="display: flex;justify-content: space-between;">
+			<button class="fan" @tap="fan()">返回</button>
+			<button class="deng" open-type="getPhoneNumber" @getphonenumber="getPhoneNumber" @click="getUserInfo">授权登录</button>
+			</view>
 		</view>
 	</view>
 	</view>
@@ -97,9 +100,9 @@
 		},
 		onLoad() {
 			let _this = this;
-			if(!uni.getStorageSync('userInfo')){
-				this.xian = !this.xian
-			}
+			// if(!uni.getStorageSync('userInfo')){
+			// 	this.xian = !this.xian
+			// }
 			uni.login({
 				provider: 'weixin',
 				  success: function (res) {
@@ -172,8 +175,21 @@
 				}
 			})
 		},
+		// onHide(){
+		// 	if(uni.getStorageSync('userInfo').user_id == null){
+		// 		this.xian = !this.xian
+		// 	}
+		// },
 		methods:{
-			
+			fan(){
+				uni.reLaunch({
+					url:'../index/index'
+				})
+				// this.xian = !this.xian
+				// uni.switchTab({
+					
+				// })
+			},
 			// 获取选择的地区
 			handleGetRegion(region){
 				let that = this
@@ -182,14 +198,24 @@
 					// console.log(region[1].code)
 			},
 			ggdet(item){
-				uni.navigateTo({
-					url:'./gonggaodet?id='+item.id
-				})
+				if(uni.getStorageSync('userInfo').user_id == null){
+					this.xian = !this.xian
+				}else{
+					uni.navigateTo({
+						url:'./gonggaodet?id='+item.id
+					})
+				}
+				
 			},
 			newdet(item){
-				uni.navigateTo({
-					url:'./newdet?id='+item.id
-				})
+				if(uni.getStorageSync('userInfo').user_id == null){
+					this.xian = !this.xian
+				}else{
+					uni.navigateTo({
+						url:'./newdet?id='+item.id
+					})
+				}
+				
 			},
 			getUserInfo(){
 				let that = this
@@ -263,9 +289,14 @@
 									})
 				           },
 			tourl(item){
-				uni.navigateTo({
-					url:item.tourl
-				})
+				if(uni.getStorageSync('userInfo').user_id == null){
+					this.xian = !this.xian
+				}else{
+					uni.navigateTo({
+						url:item.tourl
+					})
+				}
+				
 			}
 		}
 	}
@@ -317,11 +348,25 @@
 		opacity: .5;
 		margin-top: 80rpx;
 	}
-	.huoqu button{
+	.fan{
+		background: #fff;
+		color: #333;
+		font: 32rpx;
+		width: 290rpx;
+		height: 80rpx;
+		display: flex;
+		margin: auto;
+		justify-content: center;
+		align-items: center;
+		border: 3rpx solid #fff;
+		border: 0!important;
+		border-radius: 40rpx;
+	}
+	.deng{
 		background: #67c23a;
 		color: #fff;
 		font: 32rpx;
-		width: 600rpx;
+		width: 290rpx;
 		height: 80rpx;
 		display: flex;
 		margin: auto;

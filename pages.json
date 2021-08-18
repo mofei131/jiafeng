@@ -76,7 +76,7 @@
 		},{
 			"path": "pages/index/ruzhuqiye",
 			"style": {
-				"navigationBarTitleText": "入驻企业",
+				"navigationBarTitleText": "入驻企事业",
 				"enablePullDownRefresh": true
 			}
 		},{

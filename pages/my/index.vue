@@ -37,6 +37,15 @@
 				</view>
 			</view>
 		</view>
+		<view class="huoqu" v-if="xian">
+			<image src="../../static/image/wxgficon.png" mode=""></image>
+			<view class="btnbor"></view>
+			<view class="shao">会获取您的昵称、头像、手机号、地区及性别</view>
+			<view style="display: flex;justify-content: space-between;">
+			<button class="fan" @tap="fan()">返回</button>
+			<button class="deng" open-type="getPhoneNumber" @getphonenumber="getPhoneNumber" @click="getUserInfo">授权登录</button>
+			</view>
+		</view>
 	</view>
 </template>
 
@@ -44,6 +53,7 @@
 	export default{
 		data(){
 			return{
+				xian:false,
 				user:{
 					// name:uni.getStorageSync('userInfo').nickname,
 					// unit:uni.getStorageSync('userInfo').orgName,
@@ -57,6 +67,8 @@
 					paiming:'',
 					jifen:'',
 					liulan:'',
+					xian:false,
+					user_id:''
 				},
 				funct:[
 					{
@@ -95,9 +107,30 @@
 					that.funct[2].kefu = res.data.data.data 
 				}
 			})
+			
 		},
 		onShow() {
 			let that = this
+			uni.login({
+				provider: 'weixin',
+				  success: function (res) {
+				    // console.log(res);
+						uni.request({
+							url:'https://jiafeng.boyaokj.cn/api/wechat/login',
+							method:'GET',
+							data:{
+								code:res.code
+							},
+							success(res) {
+								// console.log(res)
+								that.user_id = res.data.data.user_id
+							}
+						})
+				  }
+			})
+			if(uni.getStorageSync('userInfo').user_id == null){
+				this.xian = !this.xian
+			}
 			uni.request({
 				url:'https://jiafeng.boyaokj.cn/api/wechat/getUserinfo',
 				method:'GET',
@@ -118,8 +151,20 @@
 					})
 				}
 			})
+			
+		},
+		onHide(){
+			if(uni.getStorageSync('userInfo').user_id == null){
+				this.xian = !this.xian
+			}
+			
 		},
 		methods:{
+			fan(){
+				uni.switchTab({
+					url:'../index/index'
+				})
+			},
 			tourl(url,kefu){
 				uni.navigateTo({
 					url:url
@@ -127,12 +172,147 @@
 				uni.makePhoneCall({
 					 phoneNumber: kefu, 
 				})
-		}
+		},
+		getUserInfo(){
+			let that = this
+			 uni.getUserProfile({
+					 desc:'Wexin',     // 这个参数是必须的
+					 success:res=>{
+							 // console.log(res)
+							 let data = JSON.parse(res.rawData)
+							 uni.request({
+							 	url:'https://jiafeng.boyaokj.cn/api/wechat/setUserinfo',
+								method:'GET',
+								data:{
+									nickname:data.nickName,
+									avater:data.avatarUrl,
+									country:data.country,
+									gender:data.gender,
+									province:data.province,
+									city:data.city,
+									user_id:that.user_id,
+								},
+								success(red) {
+									// console.log(red.data.data)
+									uni.setStorage({
+										key:'userInfo',
+										data:red.data.data
+									})
+								}
+							 })
+					 }
+			 })
+			},
+			getPhoneNumber(e) {
+							 let that = this 
+								uni.login({
+									provider: 'weixin',
+									success(res) {
+										// console.log(res)
+										uni.request({
+											url:'https://jiafeng.boyaokj.cn/api/wechat/setMobile',
+											method:'GET',
+											data:{
+												user_id:uni.getStorageSync('userInfo').user_id,
+												code:res.code,
+												iv:e.detail.iv,
+												encrypteddata:e.detail.encryptedData
+											},
+											success(res) {
+												that.xian = !that.xian
+												// console.log(res)
+												// uni.setStorage({
+												// 	key:'userInfo',
+												// 	data:res.data.data
+												// })
+												uni.request({
+													url:'https://jiafeng.boyaokj.cn/api/wechat/getUserinfo',
+													method:'GET',
+													data:{
+														user_id:uni.getStorageSync('userInfo').user_id
+													},
+													success(red) {
+														// console.log(red.data.data)
+														uni.setStorage({
+															key:'userInfo',
+															data:red.data.data,
+														})
+														uni.switchTab({
+															url:'../index/index'
+														})
+													}
+												})
+											}
+										})
+									}
+								})
+			           },
 		}
 	}
 </script>
 
 <style>
+	.huoqu{
+		position: fixed;
+		top: 0;
+		background-color: #fff;
+		/* height: 200rpx; */
+		width: 100%;
+		height: 100%;
+		box-sizing: border-box;
+		padding-top: 60%;
+		z-index: 50;
+		left: 0;
+	}
+	.huoqu image{
+		width: 200rpx;
+		height: 200rpx;
+		margin: auto;
+		display: block;
+	}
+	.shao{
+		color: #333;
+		text-align: center;
+		font-size: 32rpx;
+		margin-top: 80rpx;
+		margin-bottom: 60rpx;
+	}
+	.btnbor{
+		width: 680rpx;
+		margin: 20rpx auto;
+		height: 1rpx;
+		background: #999;
+		opacity: .5;
+		margin-top: 80rpx;
+	}
+	.fan{
+		background: #fff;
+		color: #333;
+		font: 32rpx;
+		width: 290rpx;
+		height: 80rpx;
+		display: flex;
+		margin: auto;
+		justify-content: center;
+		align-items: center;
+		border: 3rpx solid #fff;
+		border: 0!important;
+		border-radius: 40rpx;
+	}
+	.deng{
+		background: #67c23a;
+		color: #fff;
+		font: 32rpx;
+		width: 290rpx;
+		height: 80rpx;
+		display: flex;
+		margin: auto;
+		justify-content: center;
+		align-items: center;
+		border: 1rpx solid #67c23a;
+		border: 0!important;
+		border-radius: 40rpx;
+	}
 	.kefu{
 		font-size: 28rpx;
 		font-family: PingFangSC-Regular, PingFang SC;
