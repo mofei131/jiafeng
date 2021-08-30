@@ -1,12 +1,87 @@
 
+.xianzhi{
+	font-size: 24rpx;
+	font-family: PingFangSC-Regular, PingFang SC;
+	font-weight: 400;
+	color: #676767;
+	margin-left: 27rpx;
+}
+.yshangc{
+	position: relative;
+}
+.close{
+	position: absolute;
+	width: 34rpx;
+	height: 34rpx;
+	top: 0;
+	right: 0;
+}
+.yjshang{
+	width: 161rpx;
+	height: 161rpx;
+	border-radius: 8rpx;
+}
+.upload{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	        justify-content: space-between;
+	width: 654rpx;
+	margin: auto;
+	padding-top: 20rpx;
+}
+.duoh{
+	height: 260rpx;
+	width: 680rpx;
+	margin: auto;
+	font-size: 24rpx;
+	font-family: PingFangSC-Regular, PingFang SC;
+	font-weight: 400;
+	color: #676767;
+	padding-top: 8rpx;
+	box-sizing: border-box;
+}
+.zhangshu{
+	position: absolute;
+	font-size: 20rpx;
+	font-family: PingFangSC-Medium, PingFang SC;
+	font-weight: 500;
+	color: #979797;
+	top: 105rpx;
+	left: 68rpx;
+}
+.dianji{
+	position: relative;
+}
+.dianji image{
+	width: 161rpx;
+	height: 161rpx;
+}
+.dd{
+	font-size: 26rpx;
+	font-family: PingFangSC-Regular, PingFang SC;
+	font-weight: 400;
+	color: #333333;
+	margin: 24rpx 0 0 32rpx;
+}
+.box{
+	width: 710rpx;
+	height: 495rpx;
+	background: #F4f4f4;
+	border-radius: 14rpx;
+	/* border: 1px solid #C9C9C9; */
+	margin: 24rpx auto;
+}
 .btn{
 	width: 686rpx;
 	height: 70rpx;
-	background: #EA433A;
+	background: #30AEFF;
 	border-radius: 35rpx;
 	font-size: 28rpx;
-	font-family: PingFangSC-Regular, PingFang SC;
-	font-weight: 400;
+	font-family: PingFangSC-Medium, PingFang SC;
+	font-weight: 500;
 	color: #FFFFFF;
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -18,7 +93,7 @@
 	-webkit-align-items: center;
 	        align-items: center;
 	margin: auto;
-	margin-top: 46rpx;
+	margin-top: 150rpx;
 }
 .jieguo view{
 	font-size: 28rpx;
@@ -33,8 +108,7 @@
 	border-radius: 8rpx;
 	margin: auto;
 	padding: 18rpx 0 0 25rpx;
-	-webkit-box-sizing: border-box;
-	        box-sizing: border-box;
+	box-sizing: border-box;
 }
 .xiangmu{
 	font-size: 24rpx;
@@ -62,13 +136,12 @@ page{
 	background: #F4F4F4;
 	border-radius: 16rpx;
 	margin: 20rpx auto;
-	font-size: 28rpx;
+	font-size: 24rpx;
 	font-family: PingFangSC-Regular, PingFang SC;
 	font-weight: 400;
 	color: #51565D;
 	padding: 0 15rpx 0 15rpx;
-	-webkit-box-sizing: border-box;
-	        box-sizing: border-box;
+	box-sizing: border-box;
 }
 .miaoshu textarea{
 	width: 710rpx;
@@ -81,8 +154,7 @@ page{
 	font-family: PingFangSC-Regular, PingFang SC;
 	font-weight: 400;
 	color: #51565D;
-	-webkit-box-sizing: border-box;
-	        box-sizing: border-box;
+	box-sizing: border-box;
 }
 .xuanze{
 	width: 710rpx;
@@ -100,7 +172,6 @@ page{
 	-webkit-justify-content: space-between;
 	        justify-content: space-between;
 	padding: 0 25rpx 0 15rpx;
-	-webkit-box-sizing: border-box;
-	        box-sizing: border-box;
+	box-sizing: border-box;
 }
 

@@ -98,6 +98,7 @@
 				gonggao:[]
 			}
 		},
+		onShareAppMessage() {},
 		onLoad() {
 			let _this = this;
 			// if(!uni.getStorageSync('userInfo')){

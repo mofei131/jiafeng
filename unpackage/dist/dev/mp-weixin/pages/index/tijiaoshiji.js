@@ -154,6 +154,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
@@ -162,7 +176,16 @@ var _default =
       mark: '',
       array1: [],
       index1: 0,
-      score: '' };
+      score: '',
+      dd: '',
+      pingjia: '',
+      imgpth: [
+        // 'http://dangjian.people.com.cn/NMediaFile/2021/0714/MAIN202107141600240723883355443.jpg',
+        // 'http://dangjian.people.com.cn/NMediaFile/2021/0714/MAIN202107141600240723883355443.jpg',
+        // 'http://dangjian.people.com.cn/NMediaFile/2021/0714/MAIN202107141600240723883355443.jpg',
+      ],
+      upimage: [],
+      id: '' };
 
   },
   onLoad: function onLoad() {
@@ -177,34 +200,127 @@ var _default =
 
   },
   methods: {
+    upload: function upload() {
+      var that = this;
+      // uni.showModal({
+      //     title: '提示',
+      //     content: '请选择上传文件类型',
+      // 		confirmText:'图片',
+      // 		cancelText:'视频',
+      // 		cancelColor:'#576B95',
+      //     success: function (res) {
+      //         if (res.confirm) {
+      //             let view = uni.chooseVideo({})
+      //         } else if (res.cancel) {
+      //             let file = uni.chooseImage({})
+      //         }
+      //     }
+      // });
+
+      var file = uni.chooseImage({
+        count: 4, //默认9
+        sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
+        sourceType: ['album', 'camera'], //从相册选择、摄像头
+        success: function success(res) {
+          // for( let i in res.tempFilePaths){
+          // 	that.imgpth.push(res.tempFilePaths[i])
+          // }
+          that.imgpth = res.tempFilePaths;
+          console.log(res.tempFilePaths);
+        } });
+
+    },
+    close: function close(index) {
+      this.imgpth.splice(index, 1);
+    },
+
     anjianChange1: function anjianChange1(e) {
       // this.score = this.array1[e.detail.value].id
       this.index1 = e.detail.value;
     },
     submit: function submit() {
+      if (!this.title) {
+        uni.showToast({
+          title: '请填写事迹名称',
+          icon: 'none' });
+
+        return;
+      }
+      if (!this.pingjia) {
+        uni.showToast({
+          title: '请填写事迹描述',
+          icon: 'none' });
+
+        return;
+      }
       var that = this;
-      uni.request({
-        url: 'https://jiafeng.boyaokj.cn/api/organization/addShiji',
-        method: 'POST',
-        data: {
-          user_id: uni.getStorageSync('userInfo').id,
-          // score_id:that.score,
-          title: that.title,
-          content: that.mark,
-          score_id: that.array1[that.index1].id },
+      // uni.request({
+      // 	url:'https://jiafeng.boyaokj.cn/api/organization/addShiji',
+      // 	method:'POST',
+      // 	data:{
+      // 		user_id:uni.getStorageSync('userInfo').id,
+      // 		title:that.title,
+      // 		content:that.mark,
+      // 		score_id:that.array1[that.index1].id
+      // 	},
+      // 	success(res) {
+      // 		uni.showToast({
+      // 			title: '提交审核成功',
+      // 			duration:1000
+      // 		})
+      // 		setTimeout(function() {
+      // 		uni.switchTab({
+      // 			url:'./index'
+      // 		})
+      // 		},1000)
+      // 	}
+      // })
+      var an = [];
+      for (var i in that.imgpth) {
+        uni.uploadFile({
+          url: 'https://jiafeng.boyaokj.cn/api/file/upload',
+          filePath: that.imgpth[i],
+          name: 'file',
+          success: function success(res) {
+            an.push(JSON.parse(res.data).data.url);
+            that.upimage = an;
+            if (an.length == that.imgpth.length) {
+              console.log(JSON.stringify(an));
+              uni.request({
+                url: 'https://jiafeng.boyaokj.cn/api/organization/addShiji',
+                method: 'POST',
+                data: {
+                  user_id: uni.getStorageSync('userInfo').id,
+                  title: that.title,
+                  content: that.pingjia,
+                  score_id: that.array1[that.index1].id,
+                  images: JSON.stringify(an) },
 
-        success: function success(res) {
-          uni.showToast({
-            title: '提交审核成功',
-            duration: 1000 });
+                success: function success(res) {
+                  // console.log(res.statusCode)
+                  if (res.data.code == 200) {
+                    uni.showToast({
+                      title: '提交审核成功',
+                      duration: 1000 });
 
-          setTimeout(function () {
-            uni.switchTab({
-              url: './index' });
+                    setTimeout(function () {
+                      uni.switchTab({
+                        url: './index' });
 
-          }, 1000);
-        } });
+                    }, 1000);
+                  } else {
+                    uni.showToast({
+                      title: '提交失败，请联系客服',
+                      duration: 1000,
+                      icon: 'none' });
 
+                  }
+                } });
+
+            }
+          } });
+
+      }
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

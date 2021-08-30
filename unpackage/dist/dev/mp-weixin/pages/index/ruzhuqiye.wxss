@@ -63,7 +63,7 @@
 }
 .box{
 	width: 720rpx;
-	height: 543rpx;
+	height: 450rpx;
 	background: #FFFFFF;
 	border-radius: 14rpx;
 	margin: 21rpx auto;

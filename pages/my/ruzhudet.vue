@@ -34,10 +34,10 @@
 			<view class="title">手机号：</view>
 			<view class="gather">{{phone}}</view>
 		</view>
-		<view class="item">
+		<!-- <view class="item">
 			<view class="title">身份证号：</view>
 			<view class="gather">{{card}}</view>
-		</view>
+		</view> -->
 	</view>
 	</view>
 </template>
@@ -50,7 +50,7 @@
 				gongsi:'',
 				name:'',
 				phone:'',
-				card:''
+				// card:''
 			}
 		},
 		onShow() {
@@ -66,8 +66,8 @@
 					that.city = res.data.data.city,
 					that.gongsi = res.data.data.gongsi,
 					that.name = res.data.data.name,
-					that.phone = res.data.data.mobile,
-					that.card = res.data.data.idcard
+					that.phone = res.data.data.mobile
+					// that.card = res.data.data.idcard
 				}
 			})
 		}
@@ -127,7 +127,7 @@
 	}
 	.box{
 		width: 720rpx;
-		height: 543rpx;
+		height: 450rpx;
 		background: #FFFFFF;
 		border-radius: 14rpx;
 		margin: 21rpx auto;

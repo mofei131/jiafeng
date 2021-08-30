@@ -14,7 +14,7 @@
 			
 		</view>
 		<view class="item" v-show="city != ''">
-			<view class="title">所属企业：</view>
+			<view class="title">所属单位：</view>
 			<picker class="gather" @change="anjianChange1" :value="index1" :range="array1" range-key="name">
 				<view class="flex-row">
 					<text class="xiangmu">{{array1[index1].name}}</text>
@@ -30,10 +30,10 @@
 			<view class="title">手机号：</view>
 			<input class="gather" type="number" v-model="phone" placeholder="请输入您的手机号" placeholder-style="color: #999999;" />
 		</view>
-		<view class="item">
+		<!-- <view class="item">
 			<view class="title">身份证号：</view>
 			<input class="gather" type="text" v-model="card" placeholder="请输入您的身份证号" placeholder-style="color: #999999;" />
-		</view>
+		</view> -->
 	</view>
 	<view class="btn" @tap="ruzhu()" v-if="zhaungtai == -2">申请入驻</view>
 	<view class="btn"  v-if="zhaungtai == 0" sabled="disabled">审核中</view>
@@ -112,50 +112,48 @@
 					})
 					return
 				}
-				if (!this.card||this.card.length !=18) {
-					uni.showToast({
-						title: '请输入正确的身份证号',
-						icon: 'none',
-					})
-					return
-				}
 				let that = this
+				// console.log(that.array1[that.index1].id)
 				uni.request({
 					url:'https://jiafeng.boyaokj.cn/api/organization/ruzhu',
 					method:'GET',
 					data:{
 						user_id:uni.getStorageSync('userInfo').id,
-						// org_id:that.org,
 						name:that.name,
 						mobile:that.phone,
-						idcard:that.card,
 						org_id:that.array1[that.index1].id
 					},
 					success(res) {
-						// console.log(res)
-						uni.showToast({
-							title: '提交审核成功',
-							duration:1000
-						})
-						uni.request({
-							url:'https://jiafeng.boyaokj.cn/api/wechat/getUserinfo',
-							method:'GET',
-							data:{
-								user_id:uni.getStorageSync('userInfo').user_id
-							},
-							success(red) {
-								// console.log(red.data.data)
-								uni.setStorage({
-									key:'userInfo',
-									data:red.data.data,
-								})
-							}
-						})
-						setTimeout(function() {
-						uni.switchTab({
-							url:'./index'
-						})
-						},1000)
+						if(res.data.code == 200){
+							uni.showToast({
+								title: '提交审核成功',
+								duration:1000
+							})
+							uni.request({
+								url:'https://jiafeng.boyaokj.cn/api/wechat/getUserinfo',
+								method:'GET',
+								data:{
+									user_id:uni.getStorageSync('userInfo').user_id
+								},
+								success(red) {
+									// console.log(red.data.data)
+									uni.setStorage({
+										key:'userInfo',
+										data:red.data.data,
+									})
+								}
+							})
+							setTimeout(function() {
+							uni.switchTab({
+								url:'./index'
+							})
+							},1000)
+						}else{
+							uni.showToast({
+								title: '提交审核失败，请联系客服',
+								duration:1000
+							})
+						}
 					}
 				})
 			}
@@ -216,7 +214,7 @@
 	}
 	.box{
 		width: 720rpx;
-		height: 543rpx;
+		height: 450rpx;
 		background: #FFFFFF;
 		border-radius: 14rpx;
 		margin: 21rpx auto;

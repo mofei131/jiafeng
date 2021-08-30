@@ -74,6 +74,7 @@
 			let that = this
 			
 		},
+		onShareAppMessage() {},
 		onShow() {
 			let that = this
 			uni.login({
@@ -94,7 +95,7 @@
 								}else{
 									uni.showModal({
 									    title: '提示',
-									    content: '未入住，请先入驻',
+									    content: '未入驻，请先入驻',
 									    success: function (res) {
 									        if (res.confirm) {
 									            uni.switchTab({

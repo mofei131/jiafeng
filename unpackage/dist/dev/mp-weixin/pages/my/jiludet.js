@@ -130,7 +130,35 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;} //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -187,8 +215,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 var _default =
 {
-  data: function data() {
-    return {
+  data: function data() {var _ref;
+    return _ref = {
       title: '',
       mark: '',
       title2: '',
@@ -199,7 +227,12 @@ var _default =
       id: '',
       zancun: '',
       zhuangtai: '',
-      reject: '' };
+      reject: '',
+      pingjia: '',
+      imgpth: [],
+      upimage: [] }, _defineProperty(_ref, "id",
+    ''), _defineProperty(_ref, "show",
+    false), _ref;
 
   },
   onLoad: function onLoad(p) {
@@ -218,12 +251,15 @@ var _default =
             id: that.id },
 
           success: function success(res) {
-            console.log(that.array1.findIndex(function (item) {return item.id === res.data.data.score_id;}));
+            // console.log(res.data.data.images.replace(/\[|]/g, '').split(","))
+            console.log(JSON.parse(res.data.data.images));
+            console.log(res.data.data);
             that.title = res.data.data.title,
-            that.mark = res.data.data.content,
+            that.pingjia = res.data.data.content,
             that.index1 = that.array1.findIndex(function (item) {return item.id === res.data.data.score_id;});
             that.zhuangtai = res.data.data.status;
             that.reject = res.data.data.reject;
+            that.imgpth = JSON.parse(res.data.data.images);
             // console.log()
           } });
 
@@ -233,64 +269,152 @@ var _default =
   onShow: function onShow() {
     var that = this;
     // console.log(this.title)
-
   },
   methods: {
+    upload: function upload() {
+      var that = this;
+      var file = uni.chooseImage({
+        count: 4, //默认9
+        sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
+        sourceType: ['album', 'camera'], //从相册选择、摄像头
+        success: function success(res) {
+          that.imgpth = res.tempFilePaths;
+          // console.log(res.tempFilePaths)
+          // if(e == 1){
+          // 	uni.uploadFile({
+          // 		url:'https://layer.boyaokj.cn/api/file/upload',
+          // 		filePath: res.tempFilePaths,
+          // 		name: 'file',
+          // 		success(res) {
+          // 			that.imgpth = JSON.parse(res.data).data
+          // 		}
+          // 	})
+          // }
+        } });
+
+      that.show = !that.show;
+    },
+    close: function close(index) {
+      this.imgpth.splice(index, 1);
+    },
     anjianChange1: function anjianChange1(e) {
       // this.score = this.array1[e.detail.value].id
       this.index1 = e.detail.value;
     },
     submit: function submit() {
       var that = this;
-      uni.request({
-        url: 'https://jiafeng.boyaokj.cn/api/organization/addShiji',
-        method: 'POST',
-        data: {
-          user_id: uni.getStorageSync('userInfo').id,
-          // score_id:that.score,
-          title: that.title,
-          content: that.mark,
-          score_id: that.array1[that.index1].id },
+      var an = [];
+      console.log(that.id);
+      if (that.show) {
+        for (var i in that.imgpth) {
+          console.log(that.imgpth[i]);
+          uni.uploadFile({
+            url: 'https://jiafeng.boyaokj.cn/api/file/upload',
+            filePath: that.imgpth[i],
+            name: 'file',
+            success: function success(res) {
+              an.push(JSON.parse(res.data).data.url);
+              that.upimage = an;
+              if (an.length == that.imgpth.length) {
+                console.log(JSON.stringify(an));
+                uni.request({
+                  url: 'https://jiafeng.boyaokj.cn/api/organization/editShiji',
+                  method: 'POST',
+                  data: {
+                    user_id: uni.getStorageSync('userInfo').id,
+                    title: that.title,
+                    content: that.pingjia,
+                    score_id: that.array1[that.index1].id,
+                    images: JSON.stringify(an),
+                    id: that.id },
 
-        success: function success(res) {
-          uni.showToast({
-            title: '重新提交审核成功',
-            duration: 1000 });
+                  success: function success(res) {
+                    if (res.statusCode == 200) {
+                      uni.showToast({
+                        title: '重新提交审核成功',
+                        duration: 1000 });
 
-          setTimeout(function () {
-            uni.switchTab({
-              url: './index' });
+                      setTimeout(function () {
+                        uni.switchTab({
+                          url: './index' });
 
-          }, 1000);
-        } });
+                      }, 1000);
+                    } else {
+                      uni.showToast({
+                        title: '提交失败，请联系客服',
+                        duration: 1000,
+                        icon: 'none' });
 
-    },
-    submit2: function submit2() {
-      var that = this;
-      uni.request({
-        url: 'https://jiafeng.boyaokj.cn/api/organization/editShiji',
-        method: 'POST',
-        data: {
-          user_id: uni.getStorageSync('userInfo').id,
-          // score_id:that.score,
-          title: that.title,
-          content: that.mark,
-          score_id: that.array1[that.index1].id,
-          id: that.id },
+                    }
+                  } });
 
-        success: function success(res) {
-          uni.showToast({
-            title: '重新提交审核成功',
-            duration: 1000 });
+              }
+            }, fail: function fail() {
+              console.log("错了");
+            } });
 
-          setTimeout(function () {
-            uni.switchTab({
-              url: './index' });
+        }
+      } else {
+        uni.request({
+          url: 'https://jiafeng.boyaokj.cn/api/organization/editShiji',
+          method: 'POST',
+          data: {
+            user_id: uni.getStorageSync('userInfo').id,
+            title: that.title,
+            content: that.pingjia,
+            score_id: that.array1[that.index1].id,
+            images: JSON.stringify(that.imgpth),
+            id: that.id },
 
-          }, 1000);
-        } });
+          success: function success(res) {
+            if (res.statusCode == 200) {
+              uni.showToast({
+                title: '重新提交审核成功',
+                duration: 1000 });
 
-    } } };exports.default = _default;
+              setTimeout(function () {
+                uni.switchTab({
+                  url: './index' });
+
+              }, 1000);
+            } else {
+              uni.showToast({
+                title: '提交失败，请联系客服',
+                duration: 1000,
+                icon: 'none' });
+
+            }
+          } });
+
+      }
+
+    }
+    // submit2(){
+    // 	let that = this
+    // 	uni.request({
+    // 		url:'https://jiafeng.boyaokj.cn/api/organization/editShiji',
+    // 		method:'POST',
+    // 		data:{
+    // 			user_id:uni.getStorageSync('userInfo').id,
+    // 			title:that.title,
+    // 			content:that.mark,
+    // 			score_id:that.array1[that.index1].id,
+    // 			id:that.id
+    // 		},
+    // 		success(res) {
+    // 			uni.showToast({
+    // 				title: '重新提交审核成功',
+    // 				duration:1000
+    // 			})
+    // 			setTimeout(function() {
+    // 			uni.switchTab({
+    // 				url:'./index'
+    // 			})
+    // 			},1000)
+    // 		}
+    // 	})
+    // }
+  } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),

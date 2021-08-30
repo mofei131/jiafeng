@@ -227,6 +227,7 @@ var _default =
 
 
   },
+  onShareAppMessage: function onShareAppMessage() {},
   onLoad: function onLoad() {
     var that = this;
     uni.request({

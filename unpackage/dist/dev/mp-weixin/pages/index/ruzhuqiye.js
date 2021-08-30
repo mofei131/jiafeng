@@ -267,50 +267,48 @@ __webpack_require__.r(__webpack_exports__);
 
         return;
       }
-      if (!this.card || this.card.length != 18) {
-        uni.showToast({
-          title: '请输入正确的身份证号',
-          icon: 'none' });
-
-        return;
-      }
       var that = this;
+      // console.log(that.array1[that.index1].id)
       uni.request({
         url: 'https://jiafeng.boyaokj.cn/api/organization/ruzhu',
         method: 'GET',
         data: {
           user_id: uni.getStorageSync('userInfo').id,
-          // org_id:that.org,
           name: that.name,
           mobile: that.phone,
-          idcard: that.card,
           org_id: that.array1[that.index1].id },
 
         success: function success(res) {
-          // console.log(res)
-          uni.showToast({
-            title: '提交审核成功',
-            duration: 1000 });
+          if (res.data.code == 200) {
+            uni.showToast({
+              title: '提交审核成功',
+              duration: 1000 });
 
-          uni.request({
-            url: 'https://jiafeng.boyaokj.cn/api/wechat/getUserinfo',
-            method: 'GET',
-            data: {
-              user_id: uni.getStorageSync('userInfo').user_id },
+            uni.request({
+              url: 'https://jiafeng.boyaokj.cn/api/wechat/getUserinfo',
+              method: 'GET',
+              data: {
+                user_id: uni.getStorageSync('userInfo').user_id },
 
-            success: function success(red) {
-              // console.log(red.data.data)
-              uni.setStorage({
-                key: 'userInfo',
-                data: red.data.data });
+              success: function success(red) {
+                // console.log(red.data.data)
+                uni.setStorage({
+                  key: 'userInfo',
+                  data: red.data.data });
 
-            } });
+              } });
 
-          setTimeout(function () {
-            uni.switchTab({
-              url: './index' });
+            setTimeout(function () {
+              uni.switchTab({
+                url: './index' });
 
-          }, 1000);
+            }, 1000);
+          } else {
+            uni.showToast({
+              title: '提交审核失败，请联系客服',
+              duration: 1000 });
+
+          }
         } });
 
     } } };exports.default = _default;

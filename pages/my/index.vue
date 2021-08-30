@@ -95,6 +95,7 @@
 				]
 			}
 		},
+		onShareAppMessage() {},
 		onLoad() {
 			let that = this
 			uni.request({

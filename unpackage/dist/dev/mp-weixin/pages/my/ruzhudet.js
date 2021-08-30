@@ -165,9 +165,9 @@ var _default =
       city: '',
       gongsi: '',
       name: '',
-      phone: '',
-      card: '' };
-
+      phone: ''
+      // card:''
+    };
   },
   onShow: function onShow() {
     var that = this;
@@ -182,8 +182,8 @@ var _default =
         that.city = res.data.data.city,
         that.gongsi = res.data.data.gongsi,
         that.name = res.data.data.name,
-        that.phone = res.data.data.mobile,
-        that.card = res.data.data.idcard;
+        that.phone = res.data.data.mobile;
+        // that.card = res.data.data.idcard
       } });
 
   } };exports.default = _default;

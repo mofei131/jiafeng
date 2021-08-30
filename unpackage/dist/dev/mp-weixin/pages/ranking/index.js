@@ -206,6 +206,7 @@ var _default =
     var that = this;
 
   },
+  onShareAppMessage: function onShareAppMessage() {},
   onShow: function onShow() {
     var that = this;
     uni.login({
@@ -226,7 +227,7 @@ var _default =
             } else {
               uni.showModal({
                 title: '提示',
-                content: '未入住，请先入驻',
+                content: '未入驻，请先入驻',
                 success: function success(res) {
                   if (res.confirm) {
                     uni.switchTab({

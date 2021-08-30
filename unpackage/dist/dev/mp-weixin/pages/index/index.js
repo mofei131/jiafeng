@@ -258,6 +258,7 @@ __webpack_require__.r(__webpack_exports__);
       gonggao: [] };
 
   },
+  onShareAppMessage: function onShareAppMessage() {},
   onLoad: function onLoad() {
     var _this = this;
     // if(!uni.getStorageSync('userInfo')){
