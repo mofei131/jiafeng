@@ -8,26 +8,6 @@ color: #51565D;margin-bottom: 16rpx;">{{title}}</view>
 font-family: PingFangSC-Regular, PingFang SC;
 font-weight: 400;
 color: #51565D;">{{mark}}</view>
-		<!-- <view class="mingcheng">
-			<input type="tetx" v-model="title" placeholder="请输入事迹名称（如：助人为乐、见义勇为）" placeholder-style="color: #6A6A6A;"/>
-		</view>
-		<view class="miaoshu">
-			<textarea class="mark" type="text" v-model="mark" placeholder="请简要描述事件经过，管理员会帮您做事迹审核" placeholder-style="color: #999999;"></textarea>
-		</view>
-		<view class="xuanze">
-			<view class="leixing">请选择事迹类型</view>
-			<picker class="gather" @change="anjianChange1" :value="index1" :range="array1" range-key="title">
-				<view class="flex-row">
-					<text class="xiangmu">{{array1[index1].title}}</text>
-					<image src="../../static/image/sjrt.png"></image>
-				</view>
-			</picker>
-		</view>
-		<view class="jieguo" v-if="false">
-			<view>经调查，无此次事件发生</view>
-		</view>
-		<view class="btn" v-if="zhuangtai == 0" disabled="disabled">审核中</view>
-		<view class="btn" @tap='submit()' v-if="zhuangtai == -1">重新提交</view> -->
 	</view>
 </template>
 

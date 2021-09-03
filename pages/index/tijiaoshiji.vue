@@ -107,6 +107,7 @@
 				this.index1 = e.detail.value;
 			},
 			submit(){
+				console.log("第一步")
 				if (!this.title) {
 					uni.showToast({
 						title: '请填写事迹名称',
@@ -150,6 +151,7 @@
 						filePath: that.imgpth[i],
 						name: 'file',
 						success(res) {
+							console.log("第二步")
 							an.push(JSON.parse(res.data).data.url)
 							that.upimage = an
 							if(an.length == that.imgpth.length){
@@ -165,7 +167,7 @@
 										images:JSON.stringify(an)
 									},
 									success(res) {
-										// console.log(res.statusCode)
+										console.log("第三步")
 										if(res.data.code == 200){
 											uni.showToast({
 												title: '提交审核成功',
@@ -183,10 +185,14 @@
 												icon:'none'
 											})
 										}
+									},fail() {
+										console.log("错2")
 									}
 								})
 							}
-						}
+						},fail() {
+										console.log("错1")
+									}
 					})
 				}
 			}

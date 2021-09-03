@@ -153,36 +153,54 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
     return {
-      page: 1,
-      limit: 100,
-      yizhan: [] };
+      yizhan: [],
+      id: '' };
 
   },
-  onLoad: function onLoad() {
+  onLoad: function onLoad(p) {
+    console.log(p);
+    this.id = p.id;
+  },
+  onShow: function onShow() {
     var that = this;
     uni.request({
-      url: 'https://jiafeng.boyaokj.cn/api/yizhan/list',
+      url: 'https://jiafeng.boyaokj.cn/api/organization/shiji_list',
       method: 'GET',
       data: {
-        page: this.page,
-        limit: this.limit },
+        org_id: that.id },
 
       success: function success(res) {
-        // console.log(res.data.data)
+        console.log(res.data.data);
         that.yizhan = res.data.data;
       } });
 
   },
   methods: {
-    yzdet: function yzdet(item) {
+    todet: function todet(item) {
       uni.navigateTo({
-        url: './zhanxiangqing?id=' + item.id });
+        url: '../my/jiludet?id=' + item.id });
 
-    } } };exports.default = _default;
+    }
+    // yzdet(item){
+    // 	uni.navigateTo({
+    // 		url:'./zhanxiangqing?id='+item.id
+    // 	})
+    // }
+  } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),

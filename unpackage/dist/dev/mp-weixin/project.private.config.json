@@ -59,6 +59,18 @@
           "pathName": "pages/ranking/scroll",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "家风驿站",
+          "pathName": "pages/index/unitList",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/index/yizhanfenlei",
+          "pathName": "pages/index/yizhanfenlei",
+          "query": "",
+          "scene": null
         }
       ]
     }

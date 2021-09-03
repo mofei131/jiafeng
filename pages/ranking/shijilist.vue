@@ -51,7 +51,7 @@
 		methods:{
 			sjdet(id){
 				uni.navigateTo({
-					url:'./shijidet?id='+id
+					url:'../my/jiludet?id='+id
 				})
 			}
 		}
@@ -78,6 +78,11 @@
 		font-family: PingFangSC-Regular, PingFang SC;
 		font-weight: 400;
 		color: #51565D;
+		width: 500rpx;
+		overflow: hidden;
+		text-overflow: ellipsis ;
+		white-space: nowrap;
+		text-align: left;
 	}
 	.item{
 		width: 720rpx;

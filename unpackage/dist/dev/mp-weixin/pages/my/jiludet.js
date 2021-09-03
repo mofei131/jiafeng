@@ -213,6 +213,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {var _ref;
@@ -271,6 +283,13 @@ var _default =
     // console.log(this.title)
   },
   methods: {
+    clickimg: function clickimg() {
+      uni.previewImage({
+        urls: this.imgpth,
+        indicator: 'default',
+        longPressActions: true });
+
+    },
     upload: function upload() {
       var that = this;
       var file = uni.chooseImage({

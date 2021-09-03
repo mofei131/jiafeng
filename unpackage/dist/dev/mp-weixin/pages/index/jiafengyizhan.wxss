@@ -1,4 +1,51 @@
 
+.cha{
+	width: 500rpx;
+	overflow: hidden;
+	text-overflow: ellipsis ;
+	white-space: nowrap;
+	text-align: right;
+}
+.shong view{
+	margin-right: 10rpx;
+}
+.shong{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+}
+.zhu{
+	font-size: 30rpx;
+	font-family: PingFangSC-Regular, PingFang SC;
+	font-weight: 400;
+	color: #1E2432;
+}
+.item{
+	width: 720rpx;
+	height: 80rpx;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	        justify-content: space-between;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+	padding: 0 20rpx 0 20rpx;
+	margin: auto;
+	background: #fff;
+	box-sizing: border-box;
+	margin-top: 16rpx;
+	border-radius: 14rpx;
+}
+.item image{
+	width: 14rpx;
+	height: 28rpx;
+}
 .bottom{
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -45,9 +92,9 @@
 	width: 145rpx;
 	height: 96rpx;
 }
-.item{
+/* .item{
 	border-bottom: 1rpx solid #EEEEEE;
 	margin-top: 30rpx;
 	padding-bottom: 30rpx;
-}
+} */
 

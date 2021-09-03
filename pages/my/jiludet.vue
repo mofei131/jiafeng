@@ -11,7 +11,7 @@
 			<view class="xianzhi">{{pingjia.length}}/200</view>
 			<view class="upload">
 				<view class="yshangc" v-for="(item,index) in imgpth" :key="index">
-					<image class="yjshang" :src="item"></image>
+					<image class="yjshang" :src="item" @tap="clickimg()"></image>
 					<image class="close" src="../../static/image/scclose.png" @tap="close(index)" v-if="zhuangtai == -1"></image>
 				</view>
 				<view class="dianji" @tap="upload()" v-if="imgpth.length != 4 && zhuangtai == -1">
@@ -61,8 +61,20 @@
 		<view class="mingcheng" v-if="zhuangtai == 1">
 			<input type="tetx" v-model="title" disabled='zhuangtai == 0' placeholder="请输入事迹名称（如：助人为乐、见义勇为）" placeholder-style="color: #6A6A6A;"/>
 		</view>
-		<view class="miaoshu" v-if="zhuangtai == 1">
-			<textarea class="mark" type="text" disabled='zhuangtai == 0' v-model="mark" placeholder="请简要描述事件经过，管理员会帮您做事迹审核" placeholder-style="color: #999999;"></textarea>
+		<view class="box" v-if="zhuangtai == 1">
+			<!-- <textarea class="mark" type="text" disabled='zhuangtai == 0' v-model="mark" placeholder="请简要描述事件经过，管理员会帮您做事迹审核" placeholder-style="color: #999999;"></textarea> -->
+			<textarea maxlength="200" disabled='zhuangtai == 0' class="duoh" type="text" placeholder="请简要描述事件经过，管理员会帮您做事迹审核" placeholder-style="color: #676767;" v-model="pingjia"></textarea>
+			<view class="xianzhi">{{pingjia.length}}/200</view>
+			<view class="upload">
+				<view class="yshangc" v-for="(item,index) in imgpth" :key="index">
+					<image class="yjshang" :src="item" @tap="clickimg()"></image>
+					<image class="close" src="../../static/image/scclose.png" @tap="close(index)" v-if="zhuangtai == -1"></image>
+				</view>
+				<view class="dianji" @tap="upload()" v-if="imgpth.length != 4 && zhuangtai == -1">
+					<image src="../../static/image/scimages.png"></image>
+					<view class="zhangshu">{{imgpth.length}}/4</view>
+				</view>
+			</view>
 		</view>
 		<view class="xuanze" v-if="zhuangtai == 1">
 			<view class="leixing">请选择事迹类型</view>
@@ -139,6 +151,13 @@
 			// console.log(this.title)
 		},
 		methods:{
+			clickimg(){
+				uni.previewImage({
+					urls:this.imgpth,
+					indicator:'default',
+					longPressActions:true,
+				})
+			},
 			upload(){
 				let that = this
 							let file = uni.chooseImage({

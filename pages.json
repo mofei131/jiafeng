@@ -133,6 +133,24 @@
 				"navigationBarTitleText": "驿站详情",
 				"enablePullDownRefresh": true
 			}
+		},{
+			"path": "pages/index/unitList",
+			"style": {
+				"navigationBarTitleText": "家风驿站",
+				"enablePullDownRefresh": true
+			}
+		},{
+			"path": "pages/index/yizhanfenlei",
+			"style": {
+				"navigationBarTitleText": "家风驿站",
+				"enablePullDownRefresh": true
+			}
+		},{
+			"path": "pages/index/paihang",
+			"style": {
+				"navigationBarTitleText": "排行榜",
+				"enablePullDownRefresh": true
+			}
 		}
 	],
 	"globalStyle": {

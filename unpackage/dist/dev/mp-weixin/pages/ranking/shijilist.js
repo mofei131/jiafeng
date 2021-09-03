@@ -183,7 +183,7 @@ var _default =
   methods: {
     sjdet: function sjdet(id) {
       uni.navigateTo({
-        url: './shijidet?id=' + id });
+        url: '../my/jiludet?id=' + id });
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))

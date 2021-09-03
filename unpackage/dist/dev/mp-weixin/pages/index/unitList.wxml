@@ -1,0 +1,1 @@
+<view><block wx:for="{{unitlist}}" wx:for-item="item" wx:for-index="index" wx:key="index"><view data-event-opts="{{[['tap',[['tolist',['$0'],[[['unitlist','',index]]]]]]]}}" class="item" bindtap="__e"><view>{{item.name}}</view><image src="../../static/image/sjrt.png"></image></view></block></view>

@@ -19,7 +19,10 @@
     "pages/my/jiludet",
     "pages/ranking/shijidet",
     "pages/index/gonggaodet",
-    "pages/index/zhanxiangqing"
+    "pages/index/zhanxiangqing",
+    "pages/index/unitList",
+    "pages/index/yizhanfenlei",
+    "pages/index/paihang"
   ],
   "subPackages": [],
   "window": {
@@ -53,6 +56,5 @@
       }
     ]
   },
-  "usingComponents": {},
-  "sitemapLocation": "sitemap.json"
+  "usingComponents": {}
 }
