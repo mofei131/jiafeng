@@ -22,7 +22,11 @@
     "pages/index/zhanxiangqing",
     "pages/index/unitList",
     "pages/index/yizhanfenlei",
-    "pages/index/paihang"
+    "pages/index/paihang",
+    "pages/my/xinyuan",
+    "pages/my/duihuan",
+    "pages/my/xinyuandet",
+    "pages/my/xuyuan"
   ],
   "subPackages": [],
   "window": {

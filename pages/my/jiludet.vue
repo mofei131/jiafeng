@@ -166,17 +166,6 @@
 								sourceType: ['album','camera'], //从相册选择、摄像头
 								success: function(res) {
 									that.imgpth = res.tempFilePaths
-									// console.log(res.tempFilePaths)
-									// if(e == 1){
-									// 	uni.uploadFile({
-									// 		url:'https://layer.boyaokj.cn/api/file/upload',
-									// 		filePath: res.tempFilePaths,
-									// 		name: 'file',
-									// 		success(res) {
-									// 			that.imgpth = JSON.parse(res.data).data
-									// 		}
-									// 	})
-									// }
 								},
 							});
 							that.show = !that.show

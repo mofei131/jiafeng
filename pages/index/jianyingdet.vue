@@ -1,7 +1,6 @@
 <template>
 	<view style="overflow: hidden;">
 	<view class="about">
-		<!-- <view v-html="content"></view> -->
 		<rich-text  v-html = 'content'></rich-text>
 	</view>
 	</view>
@@ -26,8 +25,6 @@
 					user_id:uni.getStorageSync('userInfo').id
 				},
 				success(res) {
-					// console.log(res.data.data.content)
-					// that.content = res.data.data.data
 					that.content = that.formatRichText(res.data.data.content)
 				}
 			})

@@ -1,0 +1,130 @@
+
+.mingliang{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	        justify-content: space-between;
+}
+page{
+	padding-bottom: 160rpx;
+}
+.btnbox{
+	width: 750rpx;
+	height: 160rpx;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	background-color: #fff;
+}
+.btn{
+	width: 720rpx;
+	height: 76rpx;
+	background: #EA433A;
+	border-radius: 38rpx;
+	font-size: 28rpx;
+	font-family: PingFangSC-Medium, PingFang SC;
+	font-weight: 500;
+	color: #FFFFFF;
+	margin: auto;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	        justify-content: center;
+	margin-top: 42rpx;
+}
+.cont{
+	width: 710rpx;
+	border-radius: 8rpx;
+	margin: auto;
+}
+.xiangqing{
+	padding-top: 20rpx;
+	width: 710rpx;
+	margin: auto;
+}
+.info{
+	font-size: 28rpx;
+	font-family: PingFangSC-Regular, PingFang SC;
+	font-weight: 400;
+	color: #474747;
+	margin-bottom: 10rpx;
+	text-align: center;
+}
+.yu{
+	font-size: 24rpx;
+	font-family: PingFangSC-Medium, PingFang SC;
+	font-weight: 500;
+	color: #666666;
+	margin-top: 5rpx;
+}
+.fencet view{
+	font-size: 24rpx;
+	font-family: PingFangSC-Regular, PingFang SC;
+	font-weight: 400;
+	color: #8C8C8C;
+	margin-right: 10rpx;
+}
+.fencet{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+}
+.fencet image{
+	width: 36rpx;
+	height: 35rpx;
+	margin-right: 20rpx;
+}
+.jishou{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	width: 710rpx;
+	margin: auto;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	        justify-content: space-between;
+}
+.jihong{
+	font-size: 48rpx;
+	font-family: PingFangSC-Semibold, PingFang SC;
+	font-weight: 600;
+	color: #FF3D13;
+	margin-top: 10rpx;
+}
+.ming{
+	font-size: 36rpx;
+	font-family: PingFangSC-Regular, PingFang SC;
+	font-weight: 400;
+	color: #2C2B2B;
+	width: 590rpx;
+	/* white-space:nowrap;
+	overflow:hidden;
+	text-overflow: ellipsis; */
+}
+.jianlv{
+	width: 750rpx;
+	margin: auto;
+	background-color: #fff;
+	padding: 24rpx 20rpx 20rpx 20rpx;
+	box-sizing: border-box;
+}
+.banner{
+	width: 100%;
+}
+

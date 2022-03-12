@@ -71,6 +71,12 @@
           "pathName": "pages/index/yizhanfenlei",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "pages/my/xinyuan",
+          "pathName": "pages/my/xinyuan",
+          "query": "",
+          "scene": null
         }
       ]
     }

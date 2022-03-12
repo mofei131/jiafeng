@@ -151,6 +151,30 @@
 				"navigationBarTitleText": "排行榜",
 				"enablePullDownRefresh": true
 			}
+		},{
+			"path": "pages/my/xinyuan",
+			"style": {
+				"navigationBarTitleText": "商品列表",
+				"enablePullDownRefresh": true
+			}
+		},{
+			"path": "pages/my/duihuan",
+			"style": {
+				"navigationBarTitleText": "我的兑换",
+				"enablePullDownRefresh": true
+			}
+		},{
+			"path": "pages/my/xinyuandet",
+			"style": {
+				"navigationBarTitleText": "商品详情",
+				"enablePullDownRefresh": true
+			}
+		},{
+			"path": "pages/my/xuyuan",
+			"style": {
+				"navigationBarTitleText": "我的许愿",
+				"enablePullDownRefresh": true
+			}
 		}
 	],
 	"globalStyle": {

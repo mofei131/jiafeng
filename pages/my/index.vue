@@ -72,6 +72,14 @@
 				},
 				funct:[
 					{
+						iconurl:'../../static/image/dianliangicon.png',
+						title:'我的许愿',
+						tourl:'./xuyuan'
+					},{
+						iconurl:'../../static/image/duiicon.png',
+						title:'我的兑换',
+						tourl:'./duihuan'
+					},{
 						iconurl:'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAABDJJREFUaEPtmUuMFEUYx/9fj6AsiwSY7l1IjKc9mXASSXeziaFmxkeMZsUELqLxsN58hRgTFcT1JsbHxcTEA26MkIDP8HB3a/DAdKuYGE3koOGAD5zt7g0o6wPc6c/0OqPDZsau7pmdYZOpUyf1vX7fV9VV/TVhiQ9a4vGjB9DtCvYqsOQqEOSse0JgFIxbAKwDWt5HDGAGhM814I3slPNBkqQoL6EfTHPFtX00DmBbEgcpZA9f+p3vv8F1/1DRVQbwhHUAwPaq0VkAH4NxTiNEGUw9QgaBsIGAAgOrqoYOGtLZoWJUCcAT5u0AHasadPtQGemXn02rOFCVmRabB4DMewSY/+jwHYZ0j8fpqwHkzMNguhfAr2EGQ4MTjhdnOM38xeFh/c/lle8YWA3id40pN3a5qgEI+2eAB4kxrhednWmCU9XxhL0f4J0AlQ1ZWh+npwTgC2uOgQyDxgZkaXec0VbmfWHuZdBuAiq6dK6Js6UE4AlrfqMyYe/AlPPcQqOBsDaFTNk4Z/XzGnGQlc6phTr+VmsPE+Z9GNKJjS9WIDL0fwCesLcDHL2hUgzaYcjSwXrFHkCjNKosIQJHp7LyYNDMVbGElCNWFOz4ElKMS1msB5BmDyinV0Gw4xXgwsaVQdi/i8GJzgEGBazN7huc+Pq3Lr9GrUcAvKqQ3EYijxrSea2rAH7evpmZj4KRqAJgBJShO/XJ0hddBUiZ+aZqHd8D7QewH2Pilwl0QZelNXH2W74LxTlIOl8ubFypzfU/rgFOtugU4/SvOoC4gBfOdx3AF+YoMY5ki+5PSYOP5FsG8PKbh7iijZNGV1zmiBFG12xdunuaBeblrGfAGANwZo4hNhSds0khWgbwhfUEAy81cXzRkM71DU/3rdYLIDxdmyPgbMgQA0XnTBKIlgHKBcvIhNhXbXL955sREuhQVpb2LwxoOme/SMy7GqznHwFN6PLkt6oQLQOoOorkGKAZYb0SAtHpDQZfJtDyK5+5XAm13PoTpW9UbHcMIAo+EPbrDH64GtgkAV8y8OT8ZiTcxYxDAK4Dw1/GWn7NiZNfxUF0DMDLmQ+B6c1qsEeyy1ZvCy798lT9B/xMwc5XKvw+gD4Cvtelc2NbAGptFQKN6SnbKp6whwH+kBnHgvKFB286ffpyo2uDn9tyK3N4gABXl85IWwC8WmOLMK5Pta+xlfTe0whGbQnVtRZXZDC0qk2txY4BTOfM24ip1mj9FJW/RoxPTpXjyhs33zGAKBBfWO8wUGt5z4J5AsA5gBq21zVCCI0/yk66shlIRwGqPzjeAnBfXGb/nWecN4rO2qYAwnyWQc8DHBrSzSjbrRNU2gP1hv28fTeHPApgE0W/mKLfEw0G8/y59bYhSw80BYi+5ip8lDQcT/tySAyQJkuLqdMDWMzsqtjuVUAlS4sps+Qr8Dd3GEBP2Hv0qAAAAABJRU5ErkJggg==',
 						title:'提交记录',
 						tourl:'./tijiaojilu'
@@ -105,7 +113,7 @@
 					key:'kefu'
 				},
 				success(res) {
-					that.funct[2].kefu = res.data.data.data 
+					that.funct[4].kefu = res.data.data.data 
 				}
 			})
 			
@@ -139,7 +147,6 @@
 					user_id:uni.getStorageSync('userInfo').user_id
 				},
 				success(red) {
-					console.log(red.data.data.nickname)
 					that.user.name=red.data.data.nickname,
 					that.user.unit=red.data.data.orgName,
 					that.user.headurl=red.data.data.avater,
